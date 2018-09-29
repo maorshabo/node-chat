@@ -1,0 +1,16 @@
+.chatInput {
+    width: 100%;
+    display: flex;
+}
+
+.chatInput input {
+    flex: 2;
+    width: 100%;
+    padding: 3px 6px;
+    line-height: 1em;
+    outline: none;
+    height: 30px;
+}
+
+.chatInput button {
+}
