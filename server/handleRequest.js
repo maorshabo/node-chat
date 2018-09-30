@@ -41,6 +41,10 @@ function handleRequest(request) {
           // get random color and send it back to the user
           userColor = colors.shift();
           connection.sendUTF(new Message('color', userColor).toJSON());
+          connection.sendUTF(new Message('message', {
+            time: (new Date()).getTime(),
+            text: htmlEntities(`Welcome ${userName}!`)
+          }).toJSON());
           log(`User is known as: ${userName} with ${userColor} color.`);
         }
         else {

@@ -1,6 +1,8 @@
 .chatInput {
     width: 100%;
+    flex: 1;
     display: flex;
+    max-height: 30px;
 }
 
 .chatInput input {

@@ -49,8 +49,7 @@ class App extends Component {
         this.setState({ userColor: message.color });
       } else if (json.type === 'history') {
         data.forEach(message => {
-          this.addMessage(message.author, message.text,
-            message.color, new Date(message.time).getTime());
+          this.addMessage(message.author, message.text, message.color, new Date(message.time).getTime());
         })
       }
       else if (json.type === 'message') { // it's a single message
@@ -72,7 +71,7 @@ class App extends Component {
 
   addMessage = (author, text, color, time) => {
     const { messagesList } = this.state;
-    const msg = { author, text, color, time };
+    const msg = { author, text, color, time, isByMe: (author === this.state.userName && this.state.userName.length > 0) };
     this.setState({ messagesList: [...messagesList, msg] });
   };
 

@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './message.style.css';
+import format from 'date-fns/format'
 
 const Message = (props) => {
-    return (
-        <div style={{ color: props.message.color }}>
-          <span>{props.message.time}</span>
-          <p>{props.message.text}</p>
-          <p>{props.message.author}</p>
-        </div>
-    );
+  const msgDate = format(new Date(props.message.time), "HH:mm");
+  const classname = `speech-bubble ${props.message.isByMe ? 'speech-bubble-left' : 'speech-bubble-right'}`;
+  const author = props.message.author ? `${msgDate} - ${props.message.author}:` : msgDate;
+  return (
+    <div className={classname} style={{ backgroundColor: props.message.color }}>
+      <span>{author}</span>
+      <p>{props.message.text}</p>
+    </div>
+  );
 };
 
 Message.propTypes = {
@@ -21,7 +25,7 @@ Message.propTypes = {
 };
 
 Message.defaultProps = {
-    //myProp: <defaultValue>
+  //myProp: <defaultValue>
 };
 
 export default Message;
